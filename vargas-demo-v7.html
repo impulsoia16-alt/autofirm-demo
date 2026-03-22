@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vargas & Asociados — Derecho & Contabilidad</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #080c14;
+    --oscuro: #0e1520;
+    --medio: #162030;
+    --borde: rgba(196,160,90,0.18);
+    --oro: #c4a05a;
+    --oro-claro: #dbbf7a;
+    --oro-dim: #7a6030;
+    --crema: #f0ead8;
+    --crema-dim: #a89878;
+    --texto: #8fa0b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--crema);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* Textura sutil */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23ffffff08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 56px;
+    border-bottom: 1px solid transparent;
+    background: linear-gradient(to bottom, rgba(8,12,20,0.97), transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo-nombre {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    color: var(--crema);
+  }
+
+  .logo-nombre span { color: var(--oro); }
+
+  .logo-sub {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--oro-dim);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--oro); }
+
+  .nav-btn {
+    background: transparent;
+    border: 1px solid var(--oro-dim);
+    color: var(--oro);
+    padding: 9px 22px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.3s;
+  }
+
+  .nav-btn:hover { background: var(--oro); color: var(--negro); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 0% 60%, rgba(22,32,48,0.9) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 100% 20%, rgba(196,160,90,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, var(--negro) 0%, #0a1018 60%, #0c1520 100%);
+  }
+
+  /* Líneas decorativas */
+  .hero-deco {
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    border-left: 1px solid var(--borde);
+    pointer-events: none;
+  }
+
+  .hero-deco::before {
+    content: '';
+    position: absolute;
+    top: 20%; left: 15%;
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, var(--borde), transparent);
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 1;
+    padding: 140px 56px 80px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    animation: slideIn 0.8s ease both;
+  }
+
+  .eyebrow-line {
+    width: 32px;
+    height: 1px;
+    background: var(--oro);
+  }
+
+  .eyebrow span {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--oro);
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(38px, 4.5vw, 62px);
+    font-weight: 400;
+    line-height: 1.12;
+    margin-bottom: 12px;
+    animation: slideIn 0.8s 0.1s ease both;
+  }
+
+  h1 .italic {
+    font-style: italic;
+    color: var(--oro);
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--crema-dim);
+    margin-bottom: 28px;
+    animation: slideIn 0.8s 0.2s ease both;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--texto);
+    line-height: 1.75;
+    max-width: 400px;
+    margin-bottom: 48px;
+    animation: slideIn 0.8s 0.3s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    animation: slideIn 0.8s 0.4s ease both;
+  }
+
+  .btn-oro {
+    background: var(--oro);
+    color: var(--negro);
+    padding: 14px 32px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .btn-oro:hover {
+    background: var(--oro-claro);
+    box-shadow: 0 6px 24px rgba(196,160,90,0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--crema-dim);
+    padding: 14px 32px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(240,234,216,0.15);
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover { border-color: var(--oro-dim); color: var(--oro); }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+    padding: 140px 56px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stat-bloque {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .stat {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--borde);
+    padding: 24px 28px;
+    transition: background 0.3s;
+  }
+
+  .stat:hover { background: rgba(255,255,255,0.04); }
+
+  .stat-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 34px;
+    color: var(--oro);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-txt {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--texto);
+  }
+
+  .servicios-preview {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--borde);
+    padding: 24px 28px;
+  }
+
+  .servicios-preview h4 {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--oro-dim);
+    margin-bottom: 16px;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    border: 1px solid var(--borde);
+    padding: 5px 12px;
+    font-size: 11px;
+    color: var(--crema-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── SERVICIOS ─── */
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 56px;
+  }
+
+  .section-titulo {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    margin-bottom: 56px;
+  }
+
+  h2 em { font-style: italic; color: var(--oro); }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--borde);
+  }
+
+  .servicio-card {
+    background: var(--negro);
+    padding: 36px 32px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .servicio-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 0;
+    background: var(--oro);
+    transition: height 0.4s ease;
+  }
+
+  .servicio-card:hover { background: var(--oscuro); }
+  .servicio-card:hover::before { height: 100%; }
+
+  .servicio-area {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oro-dim);
+    margin-bottom: 10px;
+  }
+
+  .servicio-nombre {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .servicio-desc {
+    font-size: 13.5px;
+    color: var(--texto);
+    line-height: 1.7;
+  }
+
+  /* ─── EQUIPO ─── */
+  .equipo-section {
+    background: var(--oscuro);
+    padding: 100px 56px;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .miembro {
+    border: 1px solid var(--borde);
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .miembro:hover { border-color: rgba(196,160,90,0.4); }
+
+  .miembro-foto {
+    height: 220px;
+    background: var(--medio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    position: relative;
+  }
+
+  .miembro-foto::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to top, var(--oscuro), transparent);
+  }
+
+  .miembro-info {
+    padding: 20px 24px;
+  }
+
+  .miembro-nombre {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .miembro-rol {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 10px;
+  }
+
+  .miembro-desc {
+    font-size: 12.5px;
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  /* ─── BANNER AUTOFIRM ─── */
+  .autofirm-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: linear-gradient(135deg, rgba(196,160,90,0.06) 0%, transparent 70%);
+  }
+
+  .autofirm-texto h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .autofirm-texto h3 em { font-style: italic; color: var(--oro); }
+
+  .autofirm-texto p {
+    font-size: 14px;
+    color: var(--texto);
+    max-width: 460px;
+    line-height: 1.7;
+  }
+
+  .autofirm-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--borde);
+    padding: 10px 18px;
+    margin-bottom: 16px;
+  }
+
+  .badge-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    animation: pulsar 2s infinite;
+  }
+
+  @keyframes pulsar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .badge-txt {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--oro);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 48px 56px;
+    border-top: 1px solid var(--borde);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--texto);
+    text-align: center;
+  }
+
+  .footer-disclaimer {
+    font-size: 10px;
+    color: rgba(143,160,184,0.4);
+    margin-top: 4px;
+  }
+
+  /* ─── CHAT ─── */
+  .chat-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    background: var(--oro);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 6px 28px rgba(196,160,90,0.45);
+    transition: all 0.3s;
+  }
+
+  .chat-btn:hover { transform: scale(1.08); box-shadow: 0 10px 36px rgba(196,160,90,0.55); }
+
+  .chat-badge {
+    position: absolute;
+    top: -3px; right: -3px;
+    width: 18px; height: 18px;
+    background: #ef4444;
+    border-radius: 50%;
+    font-size: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .chat-panel {
+    position: fixed;
+    bottom: 104px;
+    right: 28px;
+    z-index: 999;
+    width: 370px;
+    height: 540px;
+    background: var(--oscuro);
+    border: 1px solid var(--borde);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(16px) scale(0.97);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .chat-panel.abierto {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .chat-cabecera {
+    background: linear-gradient(135deg, var(--negro), var(--medio));
+    padding: 18px 18px 14px;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .chat-cabecera-top {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 3px;
+  }
+
+  .chat-icono {
+    width: 38px; height: 38px;
+    background: rgba(196,160,90,0.12);
+    border: 1px solid var(--borde);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .chat-nombre {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: var(--crema);
+  }
+
+  .chat-online {
+    font-size: 10px;
+    color: #22c55e;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 2px;
+  }
+
+  .chat-online::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulsar 2s infinite;
+  }
+
+  .chat-powered-txt {
+    font-size: 9px;
+    color: var(--oro-dim);
+    letter-spacing: 0.1em;
+    margin-top: 5px;
+  }
+
+  .chat-msgs {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--borde) transparent;
+  }
+
+  .msg { display: flex; flex-direction: column; max-width: 88%; }
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; }
+
+  .msg-burbuja {
+    padding: 11px 15px;
+    font-size: 13px;
+    line-height: 1.6;
+    animation: aparecer 0.3s ease both;
+  }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg.bot .msg-burbuja {
+    background: rgba(255,255,255,0.04);
+    border-left: 2px solid var(--oro-dim);
+    color: var(--crema);
+  }
+
+  .msg.user .msg-burbuja {
+    background: rgba(196,160,90,0.12);
+    border-right: 2px solid var(--oro);
+    color: var(--crema);
+  }
+
+  .msg-hora {
+    font-size: 9px;
+    color: var(--texto);
+    margin-top: 3px;
+    padding: 0 3px;
+  }
+
+  .msg.user .msg-hora { text-align: right; }
+
+  .typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 11px 15px;
+    background: rgba(255,255,255,0.04);
+    border-left: 2px solid var(--oro-dim);
+    width: fit-content;
+  }
+
+  .typing span {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--oro-dim);
+    animation: bounce 1.2s infinite;
+  }
+
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+    40% { transform: translateY(-5px); opacity: 1; }
+  }
+
+  .quick-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 0 18px 10px;
+  }
+
+  .quick-btn {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--oro);
+    padding: 5px 11px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .quick-btn:hover { background: rgba(196,160,90,0.1); border-color: var(--oro); }
+
+  .chat-input-zona {
+    padding: 14px 18px;
+    border-top: 1px solid var(--borde);
+    display: flex;
+    gap: 9px;
+    align-items: flex-end;
+  }
+
+  .chat-input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--borde);
+    color: var(--crema);
+    padding: 9px 13px;
+    font-size: 12.5px;
+    font-family: 'Outfit', sans-serif;
+    resize: none;
+    outline: none;
+    max-height: 80px;
+    min-height: 38px;
+    transition: border-color 0.3s;
+  }
+
+  .chat-input::placeholder { color: var(--texto); }
+  .chat-input:focus { border-color: rgba(196,160,90,0.35); }
+
+  .chat-enviar {
+    width: 38px; height: 38px;
+    background: var(--oro);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--negro);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .chat-enviar:hover { background: var(--oro-claro); }
+  .chat-enviar:disabled { opacity: 0.4; cursor: not-allowed; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-nombre">Vargas <span>&</span> Asociados</div>
+    <div class="logo-sub">Derecho · Contabilidad · Consultoría</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-btn" class="btn-abrir-chat">Consulta Gratuita</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-deco"></div>
+
+  <div class="hero-left">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <span>Ciudad de México · Bogotá · Buenos Aires</span>
+    </div>
+    <h1>Soluciones Legales<br>y Contables<br><span class="italic">sin concesiones.</span></h1>
+    <p class="hero-tagline">Tres décadas protegiendo lo que más importa.</p>
+    <p class="hero-desc">Asesoría jurídica y contable integral para empresas y particulares. Combinamos rigor técnico con visión estratégica para proteger su patrimonio y hacer crecer su negocio.</p>
+    <div class="hero-btns">
+      <button class="btn-oro" class="btn-abrir-chat">Hablar con un asesor</button>
+      <button class="btn-outline" id="btnServicios">Ver servicios</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-bloque">
+      <div class="stat">
+        <div class="stat-num">30+</div>
+        <div class="stat-txt">Años de trayectoria</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">98%</div>
+        <div class="stat-txt">Casos resueltos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">850+</div>
+        <div class="stat-txt">Clientes activos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-txt">Especialistas</div>
+      </div>
+    </div>
+    <div class="servicios-preview">
+      <h4>Áreas de práctica</h4>
+      <div class="tag-list">
+        <div class="tag">Derecho Corporativo</div>
+        <div class="tag">Derecho Laboral</div>
+        <div class="tag">Contabilidad</div>
+        <div class="tag">Fiscal & Impuestos</div>
+        <div class="tag">Litigios</div>
+        <div class="tag">M&A</div>
+        <div class="tag">Sucesiones</div>
+        <div class="tag">Auditoría</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="section-titulo">Lo que hacemos</div>
+  <h2>Expertise <em>integral</em></h2>
+
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-area">Área Jurídica</div>
+      <div class="servicio-nombre">Derecho Corporativo</div>
+      <p class="servicio-desc">Constitución de sociedades, contratos comerciales, fusiones y adquisiciones. Asesoramiento estratégico en cada etapa de su empresa.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-area">Área Contable</div>
+      <div class="servicio-nombre">Contabilidad & Auditoría</div>
+      <p class="servicio-desc">Estados financieros, auditorías internas y externas, control de gestión y reportes para directorio e inversores.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-area">Área Jurídica</div>
+      <div class="servicio-nombre">Litigios & Arbitraje</div>
+      <p class="servicio-desc">Representación en disputas comerciales, laborales y civiles. Defensa activa y estrategias de resolución alternativa de conflictos.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-area">Área Fiscal</div>
+      <div class="servicio-nombre">Planificación Tributaria</div>
+      <p class="servicio-desc">Optimización fiscal legal, cumplimiento regulatorio y planificación para minimizar la carga impositiva de su empresa o patrimonio personal.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-area">Área Jurídica</div>
+      <div class="servicio-nombre">Derecho Laboral</div>
+      <p class="servicio-desc">Relaciones laborales, contratos, desvinculaciones, sindicatos y cumplimiento normativo. Prevención de conflictos y defensa en juicios.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-area">Área Contable</div>
+      <div class="servicio-nombre">Sucesiones & Patrimonio</div>
+      <p class="servicio-desc">Planificación patrimonial, testamentos, fideicomisos y estructuras de protección de activos para generaciones futuras.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo-section" id="equipo">
+  <div class="section-titulo">Quiénes somos</div>
+  <h2>Profesionales de <em>excelencia</em></h2>
+
+  <div class="equipo-grid">
+    <div class="miembro">
+      <div class="miembro-foto">👨‍⚖️</div>
+      <div class="miembro-info">
+        <div class="miembro-nombre">Dr. Ricardo Vargas</div>
+        <div class="miembro-rol">Socio Fundador · Derecho Corporativo</div>
+        <p class="miembro-desc">Abogado con 30 años de experiencia en derecho empresarial. Doctorado en la Universidad Nacional Autónoma de México.</p>
+      </div>
+    </div>
+    <div class="miembro">
+      <div class="miembro-foto">👩‍💼</div>
+      <div class="miembro-info">
+        <div class="miembro-nombre">Cra. Valentina Morales</div>
+        <div class="miembro-rol">Socia · Contabilidad & Auditoría</div>
+        <p class="miembro-desc">Contadora pública certificada con especialización en auditoría internacional y planificación fiscal para grupos empresariales.</p>
+      </div>
+    </div>
+    <div class="miembro">
+      <div class="miembro-foto">👨‍💼</div>
+      <div class="miembro-info">
+        <div class="miembro-nombre">Dr. Andrés Castellanos</div>
+        <div class="miembro-rol">Socio · Litigios & Laboral</div>
+        <p class="miembro-desc">Especialista en litigios complejos y derecho laboral. Más de 15 años representando empresas en disputas de alto impacto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOFIRM BANNER -->
+<div class="autofirm-section">
+  <div class="autofirm-texto">
+    <h3>Atención 24/7 — <em>Siempre disponibles</em></h3>
+    <p>Nuestro asistente de inteligencia artificial responde sus consultas en segundos, captura los detalles de su caso y coordina con nuestro equipo — a cualquier hora, cualquier día.</p>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:14px;">
+    <div class="autofirm-badge">
+      <div class="badge-dot"></div>
+      <span class="badge-txt">Tecnología AutoFirm IA</span>
+    </div>
+    <button class="btn-oro" class="btn-abrir-chat">Consultar ahora →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="logo">
+    <div class="logo-nombre">Vargas <span>&</span> Asociados</div>
+    <div class="logo-sub">Est. 1994</div>
+  </div>
+  <div class="footer-copy">
+    <div>Av. Paseo de la Reforma 250, CDMX · +52 55 5555 0100</div>
+    <div class="footer-disclaimer">© 2025 Vargas & Asociados S.C. — Demo powered by AutoFirm</div>
+  </div>
+  <div style="font-size:11px; color:var(--texto)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224b4c444d6254435045435143514d414b43464d510c414d4f">[email&#160;protected]</a></div>
+</footer>
+
+<!-- CHAT BOTÓN -->
+<button class="chat-btn" id="chatBtn">
+  💬
+  <div class="chat-badge" id="chatBadge">1</div>
+</button>
+
+<!-- CHAT PANEL -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-cabecera">
+    <div class="chat-cabecera-top">
+      <div class="chat-icono">⚖️</div>
+      <div>
+        <div class="chat-nombre">Vargas & Asociados</div>
+        <div class="chat-online">Asistente IA — En línea</div>
+      </div>
+    </div>
+    <div class="chat-powered-txt">Tecnología AutoFirm · Responde en segundos</div>
+  </div>
+
+  <div class="chat-msgs" id="chatMsgs"></div>
+
+  <div class="quick-btns" id="quickBtns">
+    <button class="quick-btn" data-msg="Necesito asesoría legal" class="quick-btn">Asesoría legal</button>
+    <button class="quick-btn" data-msg="Consulta contable" class="quick-btn">Consulta contable</button>
+    <button class="quick-btn" data-msg="¿Cuáles son sus honorarios?" class="quick-btn">Honorarios</button>
+    <button class="quick-btn" data-msg="Quiero agendar una reunión" class="quick-btn">Agendar reunión</button>
+  </div>
+
+  <div class="chat-input-zona">
+    <textarea class="chat-input" id="chatInput" placeholder="Escriba su consulta..." rows="1"
+       ></textarea>
+    <button class="chat-enviar" id="btnEnviar" >➤</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+document.addEventListener('DOMContentLoaded', function() {
+  // Chat toggle
+  var chatBtn = document.getElementById('chatBtn');
+  if (chatBtn) chatBtn.addEventListener('click', window.toggleChat);
+
+  // Abrir chat buttons
+  document.querySelectorAll('.btn-abrir-chat').forEach(function(b) {
+    b.addEventListener('click', window.abrirChat);
+  });
+
+  // Ver servicios
+  var btnServ = document.getElementById('btnServicios');
+  if (btnServ) btnServ.addEventListener('click', function() {
+    document.querySelector('#servicios').scrollIntoView();
+  });
+
+  // Enviar mensaje
+  var btnEnv = document.getElementById('btnEnviar');
+  if (btnEnv) btnEnv.addEventListener('click', window.enviarMensaje);
+
+  // Input enter key
+  var input = document.getElementById('chatInput');
+  if (input) {
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); window.enviarMensaje(); }
+    });
+    input.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+    });
+  }
+
+  // Quick reply buttons
+  document.querySelectorAll('.quick-btn[data-msg]').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var input = document.getElementById('chatInput');
+      input.value = this.getAttribute('data-msg');
+      window.enviarMensaje();
+    });
+  });
+});
+
+</script><script>
+const SYSTEM_PROMPT = "Sos el asistente virtual de Vargas & Asociados. Tu nombre es Sofia, creada por AutoFirm. Ayudas con consultas legales y contables. Areas: Derecho Corporativo, Litigios, Laboral, Contabilidad, Auditoria, Fiscal, Sucesiones. Consulta inicial gratuita 30 min. Tel: +52 55 5555 0100. Captura nombre y contacto del prospecto. Tono profesional y calido, prosa natural, max 3 parrafos. Saluda al inicio.";
+
+let mensajes = [];
+let abierto = false;
+let escribiendo = false;
+
+window.toggleChat = function() {
+  abierto = !abierto;
+  const panel = document.getElementById('chatPanel');
+  const badge = document.getElementById('chatBadge');
+  const btn = document.getElementById('chatBtn');
+
+  if (abierto) {
+    panel.classList.add('abierto');
+    btn.innerHTML = '✕';
+    badge.style.display = 'none';
+    if (mensajes.length === 0) {
+      setTimeout(() => agregarBot("¡Bienvenido a Vargas & Asociados! Soy Sofía, su asistente virtual disponible las 24 horas. Puedo orientarle en consultas legales y contables, informarle sobre nuestros servicios o ayudarle a coordinar una reunión con alguno de nuestros especialistas. ¿En qué puedo asistirle hoy?"), 500);
+    }
+  } else {
+    panel.classList.remove('abierto');
+    btn.innerHTML = '💬';
+  }
+}
+
+window.abrirChat = function() {
+  if (!abierto) toggleChat();
+}
+
+window.hora = function() {
+  return new Date().toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' });
+}
+
+window.agregarBot = function(texto) {
+  const c = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'msg bot';
+  d.innerHTML = `<div class="msg-burbuja">${texto}</div><div class="msg-hora">${hora()}</div>`;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+window.agregarUser = function(texto) {
+  const c = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'msg user';
+  d.innerHTML = `<div class="msg-burbuja">${texto}</div><div class="msg-hora">${hora()}</div>`;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+window.mostrarTyping = function() {
+  const c = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.id = 'typing';
+  d.className = 'msg bot';
+  d.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+window.ocultarTyping = function() {
+  const el = document.getElementById('typing');
+  if (el) el.remove();
+}
+
+window.enviarMensaje = async function() {
+  const input = document.getElementById('chatInput');
+  const texto = input.value.trim();
+  if (!texto || escribiendo) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('quickBtns').style.display = 'none';
+  document.getElementById('btnEnviar').disabled = true;
+  escribiendo = true;
+
+  agregarUser(texto);
+  mensajes.push({ role: 'user', content: texto });
+  mostrarTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': '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',
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: mensajes
+      })
+    });
+
+    const data = await res.json();
+    ocultarTyping();
+
+    const respuesta = data.content?.[0]?.text || "Disculpe la interrupción. Para asistencia inmediata llámenos al +52 55 5555 0100.";
+    mensajes.push({ role: 'assistant', content: respuesta });
+    agregarBot(respuesta);
+
+  } catch (e) {
+    ocultarTyping();
+    agregarBot("Disculpe, hubo un inconveniente técnico. Puede contactarnos al +52 55 5555 0100 o por email a info[at]vargasasociados.com.");
+  }
+
+  document.getElementById('btnEnviar').disabled = false;
+  escribiendo = false;
+}
+
+window.enviarRapido = function(texto) {
+  document.getElementById('chatInput').value = texto;
+  enviarMensaje();
+}
+
+window.manejarTecla = function(e) {
